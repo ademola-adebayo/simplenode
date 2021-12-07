@@ -21,7 +21,7 @@ pipeline {
         sshagent(credentials : ['into-tomcat']) {
             // sh 'ssh -o StrictHostKeyChecking=no forum-deployer@192.168.0.6 uptime'
             sh 'ssh -v forum-deployer@192.168.0.6'
-            sh 'ssh -o StrictHostKeyChecking=no forum-deployer@192.168.0.6 "mkdir forum; \
+            sh 'ssh -o StrictHostKeyChecking=no forum-deployer@192.168.0.6 "mkdir $HOME/forum; \
             cd forum; \
             git pull origin main;"'
             echo "Folder was created..."
