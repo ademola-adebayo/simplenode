@@ -2,15 +2,6 @@ pipeline {
   agent any
   tools {nodejs "nodejs"}
   stages {
-    stage('Get Source') {
-      git url: "git@github.com:ademola-adebayo/simplenode.git"
-    }
-
-    stage('Update Source') {
-      sh 'git config user.name ademola-adebayo'
-      sh 'git config user.email ademoladebayo@gmail.com'
-    }
-
     stage('Build') {
       steps {
         echo "Building...."
