@@ -3,7 +3,7 @@ pipeline {
   tools {nodejs "nodejs"}
   stages {
     stage('Get Source') {
-      get url: git@github.com:ademola-adebayo/simplenode.git
+      git url: git@github.com:ademola-adebayo/simplenode.git
     }
 
     stage('Update Source') {
