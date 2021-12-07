@@ -18,9 +18,15 @@ pipeline {
     stage('Deploy') {
       steps {
         echo "Deploying..."
-        sh 'ssh -o StrictHostkeyChecking=no forum-deployer@192.168.0.6 "mkdir forum; \
-        cd forum; \
-        git pull origin main; "'
+        sshagent(credentials : ['into-tomcat']) {
+            sh 'ssh -o StrictHostKeyChecking=no forum-deployer@192.168.0.6 uptime'
+            sh 'ssh -v forum-deployer@192.168.0.6'
+            sh "mkdir forum; \
+                cd forum; \
+                git pull origin main;"
+            // sh 'scp ./source/filename user@hostname.com:/remotehost/target'
+        }
+        // sh 'ssh -o StrictHostkeyChecking=no forum-deployer@192.168.0.6'
       }
     }
   }
