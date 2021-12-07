@@ -24,7 +24,7 @@ pipeline {
         //        cd forums;"'
         // }
         
-        sshagent(credentials : ['Deploy-tomcat']) {
+        sshagent(credentials : ['into-tomcat']) {
             sh 'ssh -o StrictHostKeyChecking=no forum-deployer@192.168.0.6 uptime'
             sh 'ssh -v forum-deployer@192.168.0.6'
             
