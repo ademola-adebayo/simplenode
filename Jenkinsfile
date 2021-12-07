@@ -18,10 +18,9 @@ pipeline {
     stage('Deploy') {
       steps {
         echo "Deploying..."
-        sh 'ssh forum-deployer@192.168.0.6 "mkdir forum; \
+        sh 'ssh -o StrictHostkeyChecking=no forum-deployer@192.168.0.6 "mkdir forum; \
         cd forum; \
-        git pull origin main; \
-        npm install --yes "'
+        git pull origin main; "'
       }
     }
   }
