@@ -18,11 +18,12 @@ pipeline {
     stage('Deploy') {
       steps {
         echo "Deploying..."
+        echo "Folder was created..."
         withCredentials([sshUserPrivateKey(credentialsId: 'into-tomcat')]) {
           sh 'ssh -o StrictHostKeyChecking=no forum-deployer@192.168.0.6 "mkdir forums; \
                cd forums;"'
         }
-        echo "Folder was created..."
+        
         // sshagent(credentials : ['into-tomcat']) {
             // sh 'ssh -o StrictHostKeyChecking=no forum-deployer@192.168.0.6 uptime'
             // sh 'ssh -v forum-deployer@192.168.0.6'
@@ -35,7 +36,7 @@ pipeline {
         // sh 'ssh -o StrictHostKeyChecking=no forum-deployer@192.168.0.6 "mkdir forum; \
         // cd forum; \
         // git pull origin main;"'
-        echo "Folder was created..."
+        
       }
     }
   }
