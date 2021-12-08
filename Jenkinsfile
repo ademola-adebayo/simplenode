@@ -33,10 +33,10 @@ pipeline {
             
             // sh 'scp ./source/filename user@hostname.com:/remotehost/target'
         // }
-        sh 'ssh forum-deployer@192.168.0.6 rm -rf /var/www/temp_deploy/dist/'
-        sh 'ssh forum-deployer@192.168.0.6 mkdir -p /var/www/temp_deploy'
-        sh 'scp -r dist forum-deployer@192.168.0.6:/var/www/temp_deploy/dist/'
-        sh 'ssh forum-deployer@192.168.0.6 "rm -rf /var/www/example.com/dist/ && mv /var/www/temp_deploy/dist/ /var/www/example.com/"'
+        sh 'ssh forum-deployer@192.168.0.6 rm -rf get-here'
+        sh 'ssh forum-deployer@192.168.0.6 mkdir -p get-here/temp_deploy'
+        sh 'scp -r dist forum-deployer@192.168.0.6:/get-here/temp_deploy/dist/'
+        sh 'ssh forum-deployer@192.168.0.6 "rm -rf get-here/example.com/dist/ && mv get-here/temp_deploy/dist/ get-here/example.com/"'
       }
     }
   }
