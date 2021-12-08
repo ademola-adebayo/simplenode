@@ -48,6 +48,7 @@ pipeline {
         
         sh 'ssh forum-deployer@192.168.0.6 rm -rf get-here/temp_deploy/dist'
         sh 'ssh forum-deployer@192.168.0.6 mkdir -p check/new/path/temp_deploy'
+        sh 'ssh forum-deployer@192.168.0.6 cd check/new/path/temp_deploy && git pull origin main'
         sh 'scp -r ~/distin forum-deployer@192.168.0.6:~/check/new/path/dist/'
         sh 'ssh forum-deployer@192.168.0.6 "mv check/new/path/dist/ get-here/temp_deploy/"'
       }
