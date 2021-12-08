@@ -2,6 +2,28 @@ pipeline {
   agent any
   tools {nodejs "nodejs"}
   stages {
+    stage('Prepare environment') {
+      steps {
+        echo "Building...."
+        git branch: 'main', url: 'git@github.com:ademola-adebayo/simplenode.git'
+        sh 'npm install'
+       }
+    }
+
+    stage('Code analyse') {
+      steps {
+        echo "Building...."
+        sh 'echo "Run some lints"'
+       }
+    }
+
+    stage('Unit test') {
+      steps {
+        echo "Unit testing...."
+        sh 'echo "Tests will back"'
+       }
+    }
+
     stage('Build') {
       steps {
         echo "Building...."
@@ -24,10 +46,10 @@ pipeline {
         //        cd forums;"'
         // }
         
-        sh 'ssh forum-deployer@192.168.0.6 rm -rf get-here'
-        sh 'ssh forum-deployer@192.168.0.6 mkdir -p get-here/temp_deploy'
-        sh 'scp -r dist forum-deployer@192.168.0.6:/get-here/temp_deploy/dist/'
-        sh 'ssh forum-deployer@192.168.0.6 "rm -rf get-here/example.com/dist/ && mv get-here/temp_deploy/dist/ get-here/example.com/"'
+        sh 'ssh forum-deployer@192.168.0.6 rm -rf get-here/temp_deploy/dist'
+        sh 'ssh forum-deployer@192.168.0.6 mkdir -p check/new/path/temp_deploy'
+        sh 'scp -r distin forum-deployer@192.168.0.6:/check/new/path/dist/'
+        sh 'ssh forum-deployer@192.168.0.6 "mv check/new/path/dist/ get-here/temp_deploy/"'
       }
     }
   }
