@@ -5,7 +5,7 @@ pipeline {
     stage('Prepare environment') {
       steps {
         echo "Building...."
-        git branch: 'main', url: 'git@github.com:ademola-adebayo/simplenode.git'
+        git branch: 'main', url: 'https://github.com/ademola-adebayo/simplenode.git'
         sh 'npm install'
        }
     }
